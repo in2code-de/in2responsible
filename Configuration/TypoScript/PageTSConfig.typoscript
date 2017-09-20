@@ -1,0 +1,10 @@
+tx_in2responsible {
+	showMessage = 1
+	message = Diese Person ist für den Inhalt dieser Seite verantwortlich:
+	name = Name des Ansprechpartners
+	name.field = author
+	email =
+	email.field = author_email
+	check =
+	check.field = tx_in2responsible_check
+}

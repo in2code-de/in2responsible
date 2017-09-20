@@ -1,0 +1,9 @@
+# CI/Build related files
+/.Build
+/build.xml
+/cache.properties
+/composer.lock
+
+# IDE related files
+/.idea
+/.editorconfig
