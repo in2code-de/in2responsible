@@ -1,6 +1,7 @@
 <?php
-
 namespace In2code\In2responsible\Hook;
+
+use TYPO3\CMS\Backend\Utility\BackendUtility;
 
 class ModuleHook
 {
@@ -22,18 +23,18 @@ class ModuleHook
         }
 
         if ($pageId > 0) {
-            $pageTSConfig = \TYPO3\CMS\Backend\Utility\BackendUtility::getPagesTSconfig($pageId);
+            $pageTSConfig = BackendUtility::getPagesTSconfig($pageId);
             if ($pageTSConfig['tx_in2responsible.']['showMessage'] == '1') {
                 $name = $pageTSConfig['tx_in2responsible.']['name.']['field'];
                 $email = $pageTSConfig['tx_in2responsible.']['email.']['field'];
                 $check = $pageTSConfig['tx_in2responsible.']['check.']['field'];
 
-                $pageInfo = \TYPO3\CMS\Backend\Utility\BackendUtility::getRecord('pages', $pageId, $name . ',' . $email . ',' . $check);
+                $pageInfo = BackendUtility::getRecord('pages', $pageId, $name . ',' . $email . ',' . $check);
                 if (trim($pageInfo[$name]) == '') {
-                    $rootLine = \TYPO3\CMS\Backend\Utility\BackendUtility::BEgetRootLine($pageId);
+                    $rootLine = BackendUtility::BEgetRootLine($pageId);
                     $rootLineDepth = count($rootLine);
                     for ($x = 2; $x < $rootLineDepth; $x++) {
-                        $pageInfo = \TYPO3\CMS\Backend\Utility\BackendUtility::getRecord('pages', $rootLine[$rootLineDepth - $x]['uid'], $name . ',' . $email . ',' . $check);
+                        $pageInfo = BackendUtility::getRecord('pages', $rootLine[$rootLineDepth - $x]['uid'], $name . ',' . $email . ',' . $check);
                         if (trim($pageInfo[$name]) != '') {
                             if ($pageInfo[$check] == '0') {
                                 $showResponsiblePerson = true;
