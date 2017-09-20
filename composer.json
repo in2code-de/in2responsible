@@ -1,0 +1,20 @@
+{
+  "name": "in2code/in2responsible",
+  "type": "typo3-cms-extension",
+  "description": "Shows the responsible editor for a page.",
+  "authors": [
+    {
+      "name": "in2code GmbH",
+      "email": "service@in2code.de"
+    }
+  ],
+  "license": "GPL-2.0+",
+  "require": {
+    "typo3/cms-core": ">=6.2.0,<8.7.999"
+  },
+  "autoload": {
+    "psr-4": {
+      "In2code\\In2responsible\\": "Classes"
+    }
+  }
+}
