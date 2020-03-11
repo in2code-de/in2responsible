@@ -18,4 +18,5 @@ composer require in2code/in2responsible
 
 | Version    | Date       | State      | Description                                                                  |
 | ---------- | ---------- | ---------- | ---------------------------------------------------------------------------- |
+| 4.0.0      | 2020-03-11 | TASK       | Update for TYPO3 9.5                                                         |
 | 3.0.0      | 2017-09-20 | TASK       | Update for TYPO3 8.7                                                         |
