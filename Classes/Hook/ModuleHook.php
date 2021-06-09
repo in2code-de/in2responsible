@@ -1,12 +1,16 @@
 <?php
+declare(strict_types=1);
+
 namespace In2code\In2responsible\Hook;
 
 use TYPO3\CMS\Backend\Utility\BackendUtility;
 
 class ModuleHook
 {
-
-    public function moduleBodyPostProcess()
+    /**
+     * @return string
+     */
+    public function moduleBodyPostProcess(): string
     {
         $pageId = 0;
 
@@ -73,5 +77,7 @@ class ModuleHook
                 }
             }
         }
+
+        return '';
     }
 }
