@@ -16,5 +16,11 @@
     "psr-4": {
       "In2code\\In2responsible\\": "Classes"
     }
+  },
+  "extra": {
+    "typo3/cms": {
+      "web-dir": ".Build/Web",
+      "extension-key": "in2responsible"
+    }
   }
 }
