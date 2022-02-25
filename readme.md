@@ -16,8 +16,9 @@ composer require in2code/in2responsible
 
 ## Changelog
 
-| Version    | Date       | State      | Description                                                                  |
-| ---------- | ---------- | ---------- | ---------------------------------------------------------------------------- |
-| 5.0.0      | 2021-06-09 | [!!!] TASK | Update for TYPO3 10.4. Drop support of TYPO3 6.x and 7.x                     |
-| 4.0.0      | 2020-03-11 | TASK       | Update for TYPO3 9.5                                                         |
-| 3.0.0      | 2017-09-20 | TASK       | Update for TYPO3 8.7                                                         |
+| Version | Date       | State      | Description                                              |
+|---------| ---------- | ---------- |----------------------------------------------------------|
+| 6.0.0   | 2021-06-09 | [!!!] TASK | Update for TYPO3 11.5. Drop support of TYPO3 8.x         |
+| 5.0.0   | 2021-06-09 | [!!!] TASK | Update for TYPO3 10.4. Drop support of TYPO3 6.x and 7.x |
+| 4.0.0   | 2020-03-11 | TASK       | Update for TYPO3 9.5                                     |
+| 3.0.0   | 2017-09-20 | TASK       | Update for TYPO3 8.7                                     |

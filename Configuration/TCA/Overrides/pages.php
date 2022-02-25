@@ -1,4 +1,5 @@
 <?php
+
 defined('TYPO3_MODE') or die();
 
 call_user_func(
@@ -16,7 +17,7 @@ call_user_func(
         $tmp = array(
             'tx_in2responsible_check' => array(
                 'exclude' => 1,
-                'label' => 'LLL:EXT:in2responsible/Resources/Private/Language/locallang_db.xml:in2responsible.check',
+                'label' => 'LLL:EXT:in2responsible/Resources/Private/Language/locallang_db.xlf:in2responsible.check',
                 'config' => array(
                     'type' => 'check',
                     'default' => '1',
