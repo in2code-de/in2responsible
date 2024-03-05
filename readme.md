@@ -5,17 +5,17 @@
 Small TYPO3 extension to show a responsible editor in TYPO3 backend page module for a page. Useful for large TYPO3
 instances like those from universities and higher education.
 
-## Introduction
-
 ![Page module](Documentation/Images/screenshot_backend_pagemodule.png)
 
 ![Page settings](Documentation/Images/screenshot_backend_pagesettings.png)
+
 
 ## Requirements and installation
 
 ```
 composer req in2code/in2responsible
 ```
+
 
 ## Configuration
 
@@ -47,6 +47,25 @@ tx_in2responsible {
 	check =
 	check.field = tx_in2responsible_check
 }
+```
+
+
+## DataProcessing in frontend
+
+If you want also to show name and/or email of the responsible author in frontend, you can use the delivered
+DataProcessor in TypoScript and Fluid:
+
+```
+100 = In2code\In2responsible\DataProcessing\ResponsibleProcessor
+100 {
+    as = responsibleData
+}
+```
+
+```
+<f:if condition="{responsibleData.author} && {responsibleData.author_email}">
+	<f:link.email email="{responsibleData.author_email}" class="btn btn--right-link">Send feedback</f:link.email>
+</f:if>
 ```
 
 
