@@ -5,7 +5,12 @@ namespace In2code\In2responsible\Hook;
 
 use TYPO3\CMS\Backend\Utility\BackendUtility;
 
-class ModuleHook
+/**
+ * Class ModuleHook
+ * as fallback for TYPO3 11
+ * Todo: Can be removed once TYPO3 11 support is dropped
+ */
+class ModuleHookDeprecated
 {
     /**
      * @return string

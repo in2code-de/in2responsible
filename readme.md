@@ -2,22 +2,60 @@
 
 ## Introduction
 
-Show a responsible editor in TYPO3 backend page module for a page
+Small TYPO3 extension to show a responsible editor in TYPO3 backend page module for a page. Useful for large TYPO3
+instances like those from universities and higher education.
 
 ## Introduction
 
-![Editor](Documentation/Images/screenshot_backend.png)
+![Page module](Documentation/Images/screenshot_backend_pagemodule.png)
+
+![Page settings](Documentation/Images/screenshot_backend_pagesettings.png)
 
 ## Requirements and installation
 
 ```
-composer require in2code/in2responsible
+composer req in2code/in2responsible
 ```
+
+## Configuration
+
+Use Page TSConfig for a general configuration:
+
+### TYPO3 12
+
+```
+tx_in2responsible {
+	note {
+		active = 1
+		templatePath = EXT:in2responsible/Resources/Private/Templates/Note.html
+	}
+}
+```
+
+In HTML template file, fields and labels can be defined
+
+### TYPO3 11
+
+```
+tx_in2responsible {
+	showMessage = 1
+	message = Diese Person ist für den Inhalt dieser Seite verantwortlich:
+	name = Name des Ansprechpartners
+	name.field = author
+	email =
+	email.field = author_email
+	check =
+	check.field = tx_in2responsible_check
+}
+```
+
 
 ## Changelog
 
-| Version    | Date       | State      | Description                                                                  |
-| ---------- | ---------- | ---------- | ---------------------------------------------------------------------------- |
-| 5.0.0      | 2021-06-09 | [!!!] TASK | Update for TYPO3 10.4. Drop support of TYPO3 6.x and 7.x                     |
-| 4.0.0      | 2020-03-11 | TASK       | Update for TYPO3 9.5                                                         |
-| 3.0.0      | 2017-09-20 | TASK       | Update for TYPO3 8.7                                                         |
+| Version | Date       | State      | Description                                                   |
+|---------|------------|------------|---------------------------------------------------------------|
+| 7.0.0   | 2024-03-05 | TASK       | Update for TYPO3 12, also dropped support for TYPO3 9 and 10  |
+| 6.0.0   | 2022-02-25 | [!!!] TASK | Update for TYPO3 11.5. Drop support of TYPO3 8.x              |
+| 5.0.0   | 2021-06-09 | [!!!] TASK | Update for TYPO3 10.4. Drop support of TYPO3 6.x and 7.x      |
+| 4.0.0   | 2020-03-11 | TASK       | Update for TYPO3 9.5                                          |
+| 3.0.0   | 2017-09-20 | TASK       | Update for TYPO3 8.7                                          |

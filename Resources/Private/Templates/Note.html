@@ -1,0 +1,29 @@
+<f:if condition="{active}">
+    <div class="alert alert-info">
+        <div class="media">
+            <div class="media-left" title="Information on page with uid {data.uid}">
+                <core:icon identifier="actions-info-circle-alt" size="medium" />
+            </div>
+            <div class="media-body">
+                <h4 class="alert-title">
+                    <f:translate key="LLL:EXT:in2responsible/Resources/Private/Language/locallang_db.xlf:in2responsible.note.title">Responsible person:</f:translate>
+                </h4>
+                <div class="alert-message" style="white-space: normal;">
+                    <f:render section="Body" arguments="{_all}"/>
+                </div>
+            </div>
+        </div>
+    </div>
+</f:if>
+
+
+<f:section name="Body">
+    <f:if condition="{data.author_email}">
+        <f:then>
+            <f:link.email email="{data.author_email}">{data.author}</f:link.email>
+        </f:then>
+        <f:else>
+            {data.author}
+        </f:else>
+    </f:if>
+</f:section>
