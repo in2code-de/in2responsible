@@ -7,6 +7,10 @@
 			<trans-unit id="in2responsible.check">
 				<source>Do not inherit authorship</source>
 			</trans-unit>
+
+			<trans-unit id="in2responsible.note.title">
+				<source>This person is responsible for the content of this page:</source>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>

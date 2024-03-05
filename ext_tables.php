@@ -1,8 +1,8 @@
 <?php
 
-defined('TYPO3_MODE') or die();
+defined('TYPO3') || die();
 
 // PageTSconfig
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPageTSConfig(
-    "@import 'EXT:in2responsible/Configuration/TypoScript/PageTSConfig.typoscript'"
+    '@import \'EXT:in2responsible/Configuration/TypoScript/PageTSConfig.typoscript\''
 );

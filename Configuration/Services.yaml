@@ -1,0 +1,15 @@
+services:
+  _defaults:
+    autowire: true
+    autoconfigure: true
+    public: false
+
+  In2code\In2responsible\:
+    resource: '../Classes/*'
+
+  In2code\In2responsible\Hook\PageLayout:
+    public: true
+    tags:
+      - name: event.listener
+        identifier: 'in2responsible/pagelayout'
+        method: 'modify'

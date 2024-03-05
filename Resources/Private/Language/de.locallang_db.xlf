@@ -8,6 +8,11 @@
 				<source>Do not inherit authorship</source>
 				<target>Autor nicht vererben</target>
 			</trans-unit>
+
+			<trans-unit id="in2responsible.note.title">
+				<source>This person is responsible for the content of this page:</source>
+				<target>Diese Person ist für den Inhalt dieser Seite verantwortlich:</target>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>
