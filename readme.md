@@ -5,17 +5,17 @@
 Small TYPO3 extension to show a responsible editor in TYPO3 backend page module for a page. Useful for large TYPO3
 instances like those from universities and higher education.
 
-## Introduction
-
 ![Page module](Documentation/Images/screenshot_backend_pagemodule.png)
 
 ![Page settings](Documentation/Images/screenshot_backend_pagesettings.png)
+
 
 ## Requirements and installation
 
 ```
 composer req in2code/in2responsible
 ```
+
 
 ## Configuration
 
@@ -50,12 +50,32 @@ tx_in2responsible {
 ```
 
 
+## DataProcessing in frontend (TYPO3 12 only)
+
+If you want also to show name and/or email of the responsible author in frontend, you can use the delivered
+DataProcessor in TypoScript and Fluid:
+
+```
+100 = In2code\In2responsible\DataProcessing\ResponsibleProcessor
+100 {
+    as = responsibleData
+}
+```
+
+```
+<f:if condition="{responsibleData.author} && {responsibleData.author_email}">
+	<f:link.email email="{responsibleData.author_email}" class="btn btn--right-link">Send feedback</f:link.email>
+</f:if>
+```
+
+
 ## Changelog
 
-| Version | Date       | State      | Description                                                   |
-|---------|------------|------------|---------------------------------------------------------------|
-| 7.0.0   | 2024-03-05 | TASK       | Update for TYPO3 12, also dropped support for TYPO3 9 and 10  |
-| 6.0.0   | 2022-02-25 | [!!!] TASK | Update for TYPO3 11.5. Drop support of TYPO3 8.x              |
-| 5.0.0   | 2021-06-09 | [!!!] TASK | Update for TYPO3 10.4. Drop support of TYPO3 6.x and 7.x      |
-| 4.0.0   | 2020-03-11 | TASK       | Update for TYPO3 9.5                                          |
-| 3.0.0   | 2017-09-20 | TASK       | Update for TYPO3 8.7                                          |
+| Version | Date       | State      | Description                                                        |
+|---------|------------|------------|--------------------------------------------------------------------|
+| 7.1.0   | 2024-03-05 | Feature    | Add DataProcessor for frontend rendering of the responsible person |
+| 7.0.0   | 2024-03-05 | Task       | Update for TYPO3 12, also dropped support for TYPO3 9 and 10       |
+| 6.0.0   | 2022-02-25 | [!!!] Task | Update for TYPO3 11.5. Drop support of TYPO3 8.x                   |
+| 5.0.0   | 2021-06-09 | [!!!] Task | Update for TYPO3 10.4. Drop support of TYPO3 6.x and 7.x           |
+| 4.0.0   | 2020-03-11 | Task       | Update for TYPO3 9.5                                               |
+| 3.0.0   | 2017-09-20 | Task       | Update for TYPO3 8.7                                               |

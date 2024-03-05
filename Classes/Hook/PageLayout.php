@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace In2code\In2responsible\Hook;
 
+use In2code\In2responsible\Domain\Service\PageRecord;
 use Throwable;
 use TYPO3\CMS\Backend\Controller\Event\ModifyPageLayoutContentEvent;
 use TYPO3\CMS\Backend\Utility\BackendUtility;
@@ -69,15 +70,7 @@ class PageLayout
         $queryParams = $event->getRequest()->getQueryParams();
         $pageIdentifier = (int)($queryParams['id'] ?? 0);
         $this->pageTsConfig = BackendUtility::getPagesTSconfig($pageIdentifier);
-        $this->pageRecord = $this->getClosestPageRecord($pageIdentifier);
-    }
-
-    protected function getClosestPageRecord(int $pageIdentifier): array
-    {
-        $row = BackendUtility::getRecord('pages', $pageIdentifier);
-        if ($row['author'] === '' && $row['tx_in2responsible_check'] === 0 && $row['pid'] > 0) {
-            $row = $this->getClosestPageRecord($row['pid']);
-        }
-        return $row;
+        $pageRecord = GeneralUtility::makeInstance(PageRecord::class);
+        $this->pageRecord = $pageRecord->getClosestPageRecord($pageIdentifier);
     }
 }
