@@ -11,13 +11,33 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
 class PageRecord
 {
 
-    public function getClosestPageRecord(int $pageIdentifier): array
+    /**
+     * @return array returns an empty array if no inheritance is found
+     */
+    public function getInheritedFromPage(int $pageIdentifier): array
     {
-        $row = $this->getPageRecord($pageIdentifier);
-        if ($row['author'] === '' && $row['tx_in2responsible_check'] === 0 && $row['pid'] > 0) {
-            $row = $this->getClosestPageRecord($row['pid']);
+        $pageRecord = $this->getPageRecord($pageIdentifier);
+        $parentPageWithAuthor = $this->findParentWithAuthor($pageRecord);
+
+        if (empty($parentPageWithAuthor) || ($parentPageWithAuthor['tx_in2responsible_check'] === 1 && $parentPageWithAuthor['uid'] !== $pageIdentifier)) {
+            return [];
         }
-        return $row;
+
+        return $parentPageWithAuthor;
+    }
+
+    protected function findParentWithAuthor(array $record): array
+    {
+        if ($record['author'] !== '') {
+            return $record;
+        }
+
+        // no author at all
+        if ($record['pid'] <= 0 || $record['tx_in2responsible_check'] === 1) {
+            return [];
+        }
+
+        return $this->findParentWithAuthor($this->getPageRecord($record['pid']));
     }
 
     protected function getPageRecord(int $pageIdentifier): array
