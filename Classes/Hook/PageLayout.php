@@ -24,7 +24,9 @@ class PageLayout
     public function modify(ModifyPageLayoutContentEvent $event): void
     {
         $this->initialize($event);
-        $event->addHeaderContent($this->renderContent());
+        if (!empty($this->pageRecord)) {
+            $event->addHeaderContent($this->renderContent());
+        }
     }
 
     protected function renderContent(): string
@@ -71,6 +73,6 @@ class PageLayout
         $pageIdentifier = (int)($queryParams['id'] ?? 0);
         $this->pageTsConfig = BackendUtility::getPagesTSconfig($pageIdentifier);
         $pageRecord = GeneralUtility::makeInstance(PageRecord::class);
-        $this->pageRecord = $pageRecord->getClosestPageRecord($pageIdentifier);
+        $this->pageRecord = $pageRecord->getInheritedFromPage($pageIdentifier);
     }
 }

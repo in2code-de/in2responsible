@@ -20,7 +20,7 @@ class ResponsibleProcessor implements DataProcessorInterface
     ) {
         $pageRecord = GeneralUtility::makeInstance(PageRecord::class);
         $processedData[$processorConfiguration['as'] ?? 'responsibleData'] =
-            $pageRecord->getClosestPageRecord($this->getCurrentPageIdentifier());
+            $pageRecord->getInheritedFromPage($this->getCurrentPageIdentifier());
         return $processedData;
     }
 
