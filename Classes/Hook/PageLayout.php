@@ -9,6 +9,8 @@ use TYPO3\CMS\Backend\Controller\Event\ModifyPageLayoutContentEvent;
 use TYPO3\CMS\Backend\Utility\BackendUtility;
 use TYPO3\CMS\Core\Utility\ArrayUtility;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Core\View\ViewFactoryData;
+use TYPO3\CMS\Core\View\ViewFactoryInterface;
 use TYPO3\CMS\Fluid\View\StandaloneView;
 
 class PageLayout
@@ -25,18 +27,22 @@ class PageLayout
     {
         $this->initialize($event);
         if (!empty($this->pageRecord)) {
+            // @extensionScannerIgnoreLine
             $event->addHeaderContent($this->renderContent());
         }
     }
 
     protected function renderContent(): string
     {
-        $standaloneView = GeneralUtility::makeInstance(StandaloneView::class);
-        $standaloneView->setTemplatePathAndFilename(
-            GeneralUtility::getFileAbsFileName($this->gePageTsConfigByPath('tx_in2responsible./note./templatePath'))
+        /** @var ViewFactoryInterface $viewFactory */
+        $viewFactory = GeneralUtility::makeInstance(ViewFactoryInterface::class);
+        /** @var ViewFactoryData $viewFactoryData */
+        $viewFactoryData = new ViewFactoryData(
+            templatePathAndFilename: 'EXT:in2responsible/Resources/Private/Templates/Note.html'
         );
-        $standaloneView->assignMultiple($this->getVariables());
-        return $standaloneView->render();
+        $view = $viewFactory->create($viewFactoryData);
+        $view->assignMultiple($this->getVariables());
+        return $view->render();
     }
 
     protected function getVariables(): array
@@ -57,7 +63,7 @@ class PageLayout
      * @param string $path
      * @return int|string|array
      */
-    protected function gePageTsConfigByPath(string $path)
+    protected function gePageTsConfigByPath(string $path): int|array|string
     {
         try {
             return ArrayUtility::getValueByPath($this->pageTsConfig, $path);

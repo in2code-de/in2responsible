@@ -26,15 +26,15 @@ class ResponsibleProcessor implements DataProcessorInterface
 
     public function getCurrentPageIdentifier(): int
     {
-        $typoscriptFrontendController = $this->getTyposcriptFrontendController();
-        if ($this->getTyposcriptFrontendController() === null) {
-            return 0;
-        }
-        return $typoscriptFrontendController->id;
+        return $this->getTyposcriptFrontendController() ?? 0;
     }
 
-    protected function getTyposcriptFrontendController(): ?TypoScriptFrontendController
+    /**
+     * @return int|null
+     */
+    protected function getTyposcriptFrontendController(): int|null
     {
-        return $GLOBALS['TSFE'] ?? null;
+        $routing = $GLOBALS['TYPO3_REQUEST']->getAttribute('routing');
+        return $routing ? $routing->getPageId() : null;
     }
 }
