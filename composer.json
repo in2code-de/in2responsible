@@ -27,6 +27,16 @@
     "php": ">=7.4.0",
     "typo3/cms-core": "^13.0"
   },
+  "require-dev": {
+    "typo3/cms-backend": "^13.4",
+    "typo3/cms-extbase": "^13.4",
+    "typo3/cms-extensionmanager": "^13.4",
+    "typo3/cms-filelist": "^13.4",
+    "typo3/cms-fluid": "^13.4",
+    "typo3/cms-frontend": "^13.4",
+    "typo3/cms-install": "^13.4",
+    "typo3/minimal": "^13"
+  },
   "autoload": {
     "psr-4": {
       "In2code\\In2responsible\\": "Classes"
@@ -34,8 +44,18 @@
   },
   "extra": {
     "typo3/cms": {
-      "web-dir": ".Build/Web",
+      "cms-package-dir": "{$vendor-dir}/typo3/cms",
+      "web-dir": ".build/public",
       "extension-key": "in2responsible"
+    }
+  },
+  "config": {
+    "vendor-dir": ".build/vendor",
+    "bin-dir": ".build/bin",
+    "sort-packages": true,
+    "allow-plugins": {
+      "typo3/cms-composer-installers": true,
+      "typo3/class-alias-loader": true
     }
   }
 }

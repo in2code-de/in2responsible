@@ -1,9 +1,12 @@
 # CI/Build related files
-/.Build
 /build.xml
 /cache.properties
-/composer.lock
 
 # IDE related files
 /.idea
 /.editorconfig
+
+# Development setup related files
+config/
+var/
+.build/
