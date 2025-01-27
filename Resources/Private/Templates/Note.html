@@ -20,7 +20,7 @@
 <f:section name="Body">
     <f:if condition="{data.author_email}">
         <f:then>
-            <f:link.email email="{data.author_email}">{data.author}</f:link.email>
+            <f:link.email email="{data.author_email}" target="_blank">{data.author}</f:link.email>
         </f:then>
         <f:else>
             {data.author}
