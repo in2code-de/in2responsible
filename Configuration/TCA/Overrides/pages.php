@@ -19,7 +19,7 @@ $tca = [
         'label' => 'LLL:EXT:in2responsible/Resources/Private/Language/locallang_db.xlf:in2responsible.check',
         'config' => [
             'type' => 'check',
-            'default' => '1',
+            'default' => 0,
         ],
     ],
 ];
