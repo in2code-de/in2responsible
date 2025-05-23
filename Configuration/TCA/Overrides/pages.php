@@ -1,6 +1,7 @@
 <?php
 
 use TYPO3\CMS\Core\Domain\Repository\PageRepository;
+use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
 
 defined('TYPO3') || die();
 
@@ -24,8 +25,8 @@ $tca = [
     ],
 ];
 
-\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addTCAcolumns('pages', $tca);
-\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addToAllTCAtypes(
+ExtensionManagementUtility::addTCAcolumns('pages', $tca);
+ExtensionManagementUtility::addToAllTCAtypes(
     'pages',
     'tx_in2responsible_check;;;;1-1-1',
     '',
