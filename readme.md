@@ -73,9 +73,16 @@ DataProcessor in TypoScript and Fluid:
 
 | Version | Date       | State      | Description                                                        |
 |---------|------------|------------|--------------------------------------------------------------------|
+| 8.0.0   | 2025-05-23 | [!!!] Task | Support TYPO3 13 only                                              |
 | 7.1.0   | 2024-03-05 | Feature    | Add DataProcessor for frontend rendering of the responsible person |
 | 7.0.0   | 2024-03-05 | Task       | Update for TYPO3 12, also dropped support for TYPO3 9 and 10       |
 | 6.0.0   | 2022-02-25 | [!!!] Task | Update for TYPO3 11.5. Drop support of TYPO3 8.x                   |
 | 5.0.0   | 2021-06-09 | [!!!] Task | Update for TYPO3 10.4. Drop support of TYPO3 6.x and 7.x           |
 | 4.0.0   | 2020-03-11 | Task       | Update for TYPO3 9.5                                               |
 | 3.0.0   | 2017-09-20 | Task       | Update for TYPO3 8.7                                               |
+
+## Breaking changes
+
+### Update to version 8.0.0
+
+- Field pages.tx_in2responsible_check is not checked any more by default. See commit message for details.
