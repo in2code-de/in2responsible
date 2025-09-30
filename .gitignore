@@ -10,3 +10,5 @@
 config/
 var/
 .build/
+
+composer.lock
